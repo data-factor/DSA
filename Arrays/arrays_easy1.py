@@ -20,4 +20,23 @@ def sorted_squared(array):
         array.sort()
         return array
 
-print(sorted_squared([-4,-2,0,1,3]))
+#print(sorted_squared([-4,-2,0,1,3]))
+
+#  Method 2
+# Time = O(n) Space = O(n)
+def sorted_squared(array):
+    length = len(array)
+    first,last = 0,length - 1
+    result = [0] * length
+    for element in reversed(range(length)):
+        first_square = array[first] ** 2
+        last_square = array[last] ** 2
+        if first_square > last_square:
+            result[element] = first_square
+            first+= 1
+        else:
+            result[element] = last_square
+            last-=1
+    return result
+
+print(sorted_squared([-5,-4,-2, 1, 9,12]))
